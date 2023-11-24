@@ -9,9 +9,9 @@
             "UpdateApi\\": "/",
             "UpdateApi\\v1\\Classes\\": "v1/Classes/",
             "UpdateApi\\v1\\Database\\": "v1/Database/",
+            "UpdateApi\\v1\\Endpoints\\": "v1/Endpoints/",
             "UpdateApi\\v1\\Enums\\": "v1/Enums/",
-            "UpdateApi\\v1\\Exceptions\\": "v1/Exceptions/",
-            "UpdateApi\\v1\\Endpoints\\": "v1/Endpoints/"
+            "UpdateApi\\v1\\Exceptions\\": "v1/Exceptions/"
         }
     },
     "require": {

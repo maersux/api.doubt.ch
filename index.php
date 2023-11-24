@@ -4,7 +4,7 @@ use Exception;
 use UpdateApi\v1\Classes\RouteHandler;
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/config.php';
+require __DIR__ . '/Config.php';
 
 header('Content-Type: application/json');
 

@@ -2,8 +2,8 @@
 
 use UpdateApi\v1\Classes\Endpoint;
 use UpdateApi\v1\Enums\RequestType;
+use UpdateApi\v1\Exceptions\ApiException;
 use UpdateApi\v1\Exceptions\RequestMethodException;
-use UpdateApi\v1\Exceptions\InvalidTypeException;
 
 class Families extends Endpoint {
     private const ALLOWED_REQUEST_TYPES = [
@@ -26,7 +26,7 @@ class Families extends Endpoint {
     ];
 
     /**
-     * @throws RequestMethodException|InvalidTypeException
+     * @throws ApiException
      */
     public function __construct() {
         parent::__construct(self::FIELDS);

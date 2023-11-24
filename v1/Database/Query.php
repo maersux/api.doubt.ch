@@ -4,10 +4,7 @@ use PDO;
 use UpdateApi\v1\Classes\Response;
 use UpdateApi\v1\Enums\QueryStatement;
 use UpdateApi\v1\Enums\ResponseCode;
-use UpdateApi\v1\Exceptions\InvalidFieldException;
-use UpdateApi\v1\Exceptions\InvalidOrderByException;
-use UpdateApi\v1\Exceptions\InvalidTypeException;
-use UpdateApi\v1\Exceptions\NoArgumentsException;
+use UpdateApi\v1\Exceptions\ApiException;
 use UpdateApi\v1\Exceptions\NoResultsFoundException;
 
 class Query {
@@ -26,9 +23,7 @@ class Query {
     }
 
     /**
-     * @throws InvalidOrderByException
-     * @throws InvalidFieldException
-     * @throws InvalidTypeException
+     * @throws ApiException
      */
     public function prepareSelect(array $dbFields, string $className): void {
         $select = new Select($this->table, $dbFields, $className);
@@ -40,9 +35,7 @@ class Query {
     }
 
     /**
-     * @throws InvalidFieldException
-     * @throws NoArgumentsException
-     * @throws InvalidTypeException
+     * @throws ApiException
      */
     public function prepareInsert(array $dbFields, string $className): void {
         $insert = new Insert($this->table, $dbFields, $className);
