@@ -1,5 +1,6 @@
 <?php namespace UpdateApi\v1\Database;
 
+use UpdateApi\v1\Exceptions\ApiException;
 use UpdateApi\v1\Exceptions\InvalidFieldException;
 use UpdateApi\v1\Exceptions\InvalidOrderByException;
 use UpdateApi\v1\Exceptions\InvalidTypeException;
@@ -8,11 +9,7 @@ class Select {
     private array $query;
     private array $arguments = [];
 
-    /**
-     * @throws InvalidFieldException
-     * @throws InvalidOrderByException
-     * @throws InvalidTypeException
-     */
+    /** @throws ApiException */
     public function __construct(string $table, array $dbFields, string $className) {
         $this->query = [sprintf('SELECT * FROM `%s`', $table)];
 
@@ -56,9 +53,7 @@ class Select {
     }
 
 
-    /**
-     * @throws InvalidTypeException
-     */
+    /** @throws ApiException */
     private function addIntegerToQuery(array $properties, string $field, string $parameter): void {
         if (!preg_match('/^[<>]?\d+$/', $parameter)) {
             throw new InvalidTypeException($field, $properties['type'], gettype($parameter));

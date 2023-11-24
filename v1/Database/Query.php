@@ -22,9 +22,7 @@ class Query {
         $this->table = $table;
     }
 
-    /**
-     * @throws ApiException
-     */
+    /** @throws ApiException */
     public function prepareSelect(array $dbFields, string $className): void {
         $select = new Select($this->table, $dbFields, $className);
 
@@ -34,9 +32,7 @@ class Query {
         $this->arguments = $select->getArguments();
     }
 
-    /**
-     * @throws ApiException
-     */
+    /** @throws ApiException */
     public function prepareInsert(array $dbFields, string $className): void {
         $insert = new Insert($this->table, $dbFields, $className);
 
@@ -46,9 +42,7 @@ class Query {
         $this->arguments = $insert->getArguments();
     }
 
-    /**
-     * @throws NoResultsFoundException
-     */
+    /** @throws ApiException */
     public function execute(): Response {
         $statement = $this->connection->prepare(implode(' ', $this->query));
         $statement->execute($this->arguments);

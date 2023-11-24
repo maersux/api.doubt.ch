@@ -1,5 +1,6 @@
 <?php namespace UpdateApi\v1\Database;
 
+use UpdateApi\v1\Exceptions\ApiException;
 use UpdateApi\v1\Exceptions\FieldRequiredException;
 use UpdateApi\v1\Exceptions\InvalidTypeException;
 use UpdateApi\v1\Exceptions\NoArgumentsException;
@@ -8,11 +9,7 @@ class Insert {
     private array $query;
     private array $arguments = [];
 
-    /**
-     * @throws FieldRequiredException
-     * @throws InvalidTypeException
-     * @throws NoArgumentsException
-     */
+    /** @throws ApiException */
     public function __construct(string $table, array $dbFields, string $className) {
         $this->query = [sprintf('INSERT INTO %s VALUES (NULL, :values)', $table)];
 

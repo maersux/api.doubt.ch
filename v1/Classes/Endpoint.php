@@ -3,11 +3,7 @@
 use UpdateApi\v1\Database\Query;
 use UpdateApi\v1\Enums\RequestType;
 use UpdateApi\v1\Enums\ResponseCode;
-use UpdateApi\v1\Exceptions\InvalidFieldException;
-use UpdateApi\v1\Exceptions\InvalidOrderByException;
-use UpdateApi\v1\Exceptions\NoArgumentsException;
-use UpdateApi\v1\Exceptions\NoResultsFoundException;
-use UpdateApi\v1\Exceptions\InvalidTypeException;
+use UpdateApi\v1\Exceptions\ApiException;
 
 class Endpoint {
     protected string $uri;
@@ -34,12 +30,7 @@ class Endpoint {
         $this->className = strtolower(end($classWithNamespace));
     }
 
-    /**
-     * @throws NoResultsFoundException
-     * @throws InvalidOrderByException
-     * @throws InvalidFieldException
-     * @throws InvalidTypeException
-     */
+    /** @throws ApiException */
     protected function get(): Response {
         $query = new Query($this->className);
 
@@ -48,10 +39,7 @@ class Endpoint {
         return $query->execute();
     }
 
-    /**
-     * @throws InvalidFieldException|NoArgumentsException|InvalidTypeException
-     * @throws NoResultsFoundException
-     */
+    /** @throws ApiException */
     protected function post(): Response {
         $query = new Query($this->className);
 

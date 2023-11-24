@@ -1,5 +1,6 @@
 <?php namespace UpdateApi\v1\Database;
 
+use UpdateApi\v1\Exceptions\ApiException;
 use UpdateApi\v1\Exceptions\InvalidTypeException;
 
 class Parameters {
@@ -7,9 +8,7 @@ class Parameters {
     private string $sort = '';
     private string $order = 'asc';
 
-    /**
-     * @throws InvalidTypeException
-     */
+    /** @throws ApiException */
     public function __construct() {
         foreach ($_GET as $key => $value) {
             $key = $this->toCamelCase($key);
